@@ -1,0 +1,82 @@
+<idea-plugin>
+    <id>com.wind.action.suiyuan.id</id>
+    <name>随缘安卓辅助插件</name>
+    <version>9.2</version>
+    <vendor email="874334395" url="http://www.yourcompany.com">随缘</vendor>
+
+    <description><![CDATA[
+    <![CDATA[
+    <p><b>E4A类库开发工具辅助插件</b>
+    <p><b>作者:随缘 QQ:874334395</b>
+    <p><b>QQ群:476412098</b>
+    <p><b>支持maven仓库遍历</b>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>org.intellij.groovy</depends>
+    <depends>com.intellij.properties</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.wind.action.service.WriterService"/>
+
+    </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.wind.action.e4a.util.ProjectCompilation"/>
+
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow anchor="right"
+                    secondary="false"
+                    factoryClass="com.wind.action.ReadFactory" id="作者:随缘_QQ:874334395"/>
+        <toolWindow anchor="right"
+                    secondary="false"
+                    factoryClass="com.wind.action.MavenFactory" id="Maven本地库"/>
+    </extensions>
+
+
+    <actions>
+        <group id="TestMenu" text="_随缘安卓辅助插件" description="xxx">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="TestAction9" class="com.wind.action.E4AELPUtil" text="推荐使用AS_4.2.0版本" description="xxx"/>
+            <action id="TestAction1" class="com.wind.action.E4AUtil" text="初始化E4A开发环境" description="xxx"/>
+            <action id="TestAction7" class="com.wind.action.E4AELPUtil" text="类库树补全" description="xxx"/>
+            <action id="TestAction8" class="com.wind.action.E4AELPUtil" text="创建测试窗口" description="xxx"/>
+            <action id="TestAction4" class="com.wind.action.E4AELPUtil" text="导入类库ELP" description="xxx"/>
+            <action id="TestAction6" class="com.wind.action.E4AELPUtil" text="导入类库目录" description="xxx"/>
+            <action id="TestAction5" class="com.wind.action.E4AELPUtil" text="创建类库项目" description="xxx"/>
+            <action id="TestAction2" class="com.wind.action.Maven" text="设置为阿里BUILD" description="xxx"/>
+            <action id="TestAction3" class="com.wind.action.Maven2" text="修复导入项目找不到JDK版本" description="xxx"/>
+        </group>
+        <group id="syutil" text="_SuiYuan Util" description="xxx">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
+            <separator/>
+            <action id="compileelb" class="com.wind.action.e4a.util.ProjectCompilation" text="Compile elb " description="编译类库"/>
+            <separator/>
+            <action id="deleteModule" class="com.wind.action.e4a.util.DeleteModule" text="强制删除" description="强制删除Module"/>
+            <action id="addModule" class="com.wind.action.e4a.util.AddModule" text="AddModule" description="引入module"/>
+            <action id="Dereference" class="com.wind.action.e4a.util.Dereference" text="Dereference" description="解除引用"/>
+            <action id="ViewHolder" class="com.wind.action.e4a.util.XMLCodeGeneration" text="生成ViewHolder代码" description="生成ViewHolder代码"/>
+            <action id="BaseAdapter_getView" class="com.wind.action.e4a.util.XMLCodeGeneration" text="生成BaseAdapterGetView代码" description="生成BaseAdapter_getView代码"/>
+            <action id="BaseAdapter" class="com.wind.action.e4a.util.XMLCodeGeneration" text="生成BaseAdapter类代码" description="生成BaseAdapter类代码"/>
+            <action id="variableName" class="com.wind.action.e4a.util.XMLCodeGeneration" text="生成变量" description="生成变量名称"/>
+            <action id="variableNames" class="com.wind.action.e4a.util.XMLCodeGeneration" text="生成变量并赋值" description="生成变量并赋值"/>
+            <separator/>
+            <separator/>
+        </group>
+        <action id="AddModule" class="com.wind.action.e4a.util.AddModule" text="AddModule"/>
+        <action id="Dereference" class="com.wind.action.e4a.util.Dereference" text="Dereference" description="解除引用"/>
+    </actions>
+
+
+</idea-plugin>

@@ -1,0 +1,90 @@
+<配置 xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools">
+    <编译配置>
+        <sdk>C:/e4a</sdk>
+        <!--如果为true 则会自动注入E4A中缺失的注解!-->
+        <引入V7注解>true</引入V7注解>
+        <!--由于更新频繁 随缘工具包不建议使用,-->
+        <引入随缘工具包>false</引入随缘工具包>
+    </编译配置>
+    <module
+        说明="如果你的项目有依赖其他module,请在此列出,注意你附加的module必须是唯一完整且没有在嵌套别的module,否则可能无法正常为你编译!
+        model_libs下可以有jar但不能有aar,也可以使用本地仓库但是必须在xml中配置相应的仓库地址">
+        <moduleName 说明="如果此moduleName不存在,默认跳过">VideoAccelerate</moduleName>
+    </module>
+    <额外的JAR 说明="注意此配置下的jar,只在编译时使用,并不会打包进elb中">
+        <flie 说明="jar包的绝对路径">d:/xxxxx/xxxx.jar</flie>
+    </额外的JAR>
+
+    <!--AS 本地仓库遍历 注意:本地仓库路径格式  strictMode 严谨模式下,必须存在依赖否则异常-->
+    <dependencys 说明="递归AS 本地仓库" mavenRepositoryDirectory="C:/Users/${userName}/.gradle/caches/modules-2/files-2.1" strictMode="true">
+        <!--如果:引入V7注解节点为true 则会自动排除以下包中冲突的注解-->
+        <!--你编写的每一个库注意依赖版本-->
+        <!--implementation com.android.support:appcompat-v7:28.0.0-->
+        <dependency>appcompat-v7:28.0.0</dependency>
+        <dependency>annotation:1.2.0</dependency>
+        <exclude>annotation:1.0.0</exclude>
+    </dependencys>
+    <!--关于资源xml文件中属性冲突解决方案-->
+    <!-- E:/E4A_Demo/suiyuan_tupianliebiaokuangTV6/build/e4a/resource/res/values/supportcompat28_0_0values.xml:6-->
+    <values_err 说明="本地仓库资源属性可能存在冲突,通过此设置进行删除处理">
+        <err>supportcompat28_0_0values.xml:9</err>
+        <err>supportcompat28_0_0values.xml:7</err>
+    </values_err>
+    <类库信息>
+        <类库版本>1.0</类库版本>
+        <作者>随缘</作者>
+        <QQ>874334395</QQ>
+        <QQ群>476412098</QQ群>
+        <描述>.......................</描述>
+    </类库信息>
+    <附加权限>
+        <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+        <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+        <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+        <uses-permission android:name="android.permission.REORDER_TASKS"/>
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+        <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    </附加权限>
+    <Manifest 说明="在AndroidManifest: activity, servicev, reciver, meta-data"/>
+    <mainActivity 说明="在mainActivity:intent-filter,meta-data"/>
+    <自定义属性 说明="固定节点勿修改节点名称">
+        <属性1 说明="★"/>
+        <属性2 说明="◆"/>
+        <属性3 说明="■"/>
+    </自定义属性>
+    <V7魔改版开发类库说明>
+        <开发注意事项>
+            如果你已经开始开发V7类库或安卓X类库了!
+            你必须先到QQ:476412098 下载E4A魔改资料魔改你的E4A,
+            否则你编译的类库无法正常使用甚至无法完成类库编译会.
+            QQ群中魔改版向下兼容,但你必须确保你的jdk版本必须>=8
+        </开发注意事项>
+        <内置依赖>
+            以下包包含资源文件或R文件 ,在 dependency节点下只要配置了对应坐标则会自动为其生成资源及R
+            关于注解 无任何内置,依旧只有E4A已经有的注解
+            为了补全注解,你可以设置 节点:引入V7注解=true
+            implementation 'androidx.versionedparcelable:versionedparcelable:1.0.0'
+            implementation 'com.android.support:appcompat-v7:28.0.0'
+            implementation 'android.arch.lifecycle:runtime:1.1.1'
+            implementation 'android.arch.core:runtime:1.1.1'
+            implementation 'android.arch.lifecycle:common:1.1.1'
+            implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+        </内置依赖>
+        <推荐统一版本>
+            implementation 'com.android.support:appcompat-v7:28.0.0'
+            implementation 'com.android.support:recyclerview-v7:28.0.0'
+            implementation 'androidx.versionedparcelable:versionedparcelable:1.0.0'
+            implementation 'com.android.support:appcompat-v7:28.0.0'
+            implementation 'android.arch.lifecycle:runtime:1.1.1'
+            implementation 'android.arch.core:runtime:1.1.1'
+            implementation 'android.arch.lifecycle:common:1.1.1'
+            implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+        </推荐统一版本>
+    </V7魔改版开发类库说明>
+</配置>
